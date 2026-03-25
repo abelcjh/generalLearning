@@ -23,3 +23,7 @@ registry charge wholesale price, registrars add services so charge more
 # transfer domain
 if want cheaper renewal fee at different registrar, transfer domain to there
 unlock domain in current registrar, get auth code, go to new registrar, select transfer domain, enter code, pay for 1 year
+
+# dns vs registrar
+registrar is billing company, authorized sell legal right to domain
+dns, domain name system, is internet gps, translate domain into ip address
