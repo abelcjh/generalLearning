@@ -25,3 +25,6 @@ and then let the fork remain, pin to profile
 by default not shown on profile, commits also not counted
 
 **Need to go to settings, tick include private contributions**
+
+## if delete repo
+both public and private, contributions gone
