@@ -35,3 +35,7 @@ delegation signer, part of dnssec, dns security extension
 prove dns info coming from nameserver not tampered by man in the middle
 registry only has info about domain and its nameserver
 ds establish chain of trust between registry and domain
+
+# dns propagation
+after configure domain to ip address translation for nameserver,
+dns takes time to propagate the data around the world
