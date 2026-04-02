@@ -57,6 +57,7 @@ anything written under that path, shows up in host repo, but need write access
 ```bash
 # list all compose-managed containers for the host, where the yml file is located
 # can confirm stack is up
+# ps is process status
 docker compose ps
 # inspect the bind mounts in container, confirm match volumes block in yml
 # inspect returns a lot of things, format flag print only 1 field
