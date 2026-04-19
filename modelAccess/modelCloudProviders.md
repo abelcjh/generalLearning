@@ -1,15 +1,3 @@
-# personal plan
-access qwen via cloud
-access opus via anthropic console
-access gemini via gcp
-
-thinking, opus 4.7 xhigh
-research, gemini 3.1 pro
-summarize and format, gpt-5 nano
-scout, grok 4.2
-tool calling, qwen 3.5 glm 5.1 kimi k2.5 thinking
-
-
 # industry players
 gmi cloud
 
