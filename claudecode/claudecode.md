@@ -13,3 +13,6 @@ means opus extended thinking high, the highest model already
 lower effort - run /effort, move to medium or high, dont use xhigh unless needed
 change model - /model sonnet
 check tokens - /cost
+
+# claude code is just claude model plus some logic to execute in pc
+cost comes from model

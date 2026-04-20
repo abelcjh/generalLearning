@@ -7,3 +7,6 @@ tune safety parameters yourself
 
 # cost scaling
 high volume tasks, self host open source model is 70% cheaper than proprietary models
+
+# drawbacks
+## need strong enough gpu to host

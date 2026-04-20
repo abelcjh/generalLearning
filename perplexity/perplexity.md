@@ -17,3 +17,7 @@ exa, api for ai agents, neural search engine, search by meaning rather than keyw
 # very generous free tier, april 2026
 unlimited standard searches using sonar model
 5 pro searches every 4 hours
+
+# why perplexity different from just model
+model guess next word based on training data
+intercept prompt, run search query, download text from live websites into context window, summarize
