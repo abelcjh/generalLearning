@@ -1,10 +1,23 @@
 # personal plan
 ## coding
-thinking, opus 4.7 xhigh
+### coding agent setup
+visuals, cursor ide free
+orchestrator, aider cli
+
+### architect
+opus 4.7 xhigh
+
+### editor
+must be fast cheap obedient to formatting
+qwen 3.5 max
+alibaba optimized it for python, typescript tool calling syntax
+
 research, gemini 3.1 pro
 summarize and format, gpt-5 nano
 news, grok 4.2
-tool calling, qwen 3.5 glm 5.1 kimi k2.5 thinking
+
+### runtime reasoner
+qwen 3.5 glm 5.1 kimi k2.5 thinking
 
 how to access
 anthropic console access opus 4.7, 1 subscription
