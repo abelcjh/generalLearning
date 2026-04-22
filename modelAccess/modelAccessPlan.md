@@ -12,6 +12,8 @@ must be fast cheap obedient to formatting
 qwen 3.5 max
 alibaba optimized it for python, typescript tool calling syntax
 
+or ilmu coding, behind is glm
+
 #### option 2
 codex 5.4 thanks to muthu
 
@@ -26,7 +28,7 @@ gpt-5 nano
 grok 4.2
 
 #### runtime reasoner
-qwen 3.5 glm 5.1 kimi k2.5 thinking
+qwen 3.5 glm 5.1 kimi k2.5 thinking ilmu coding
 
 #### tts stt
 elevenlabs
@@ -53,7 +55,7 @@ but do not use gemini free, data used to train model
 
 ### general knowledge, external research, browser
 
-perplexity, free
+gemini 3.1 pro
 
 ### data transformation
 for csv files
