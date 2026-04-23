@@ -11,3 +11,5 @@ but if put in bash rc file, all programs can see and use
 open file in cursor
 add the line export ... = ""
 back in terminal, run source ~/.bashrc
+
+/u flag tells wsl, when run windows application, inject variable into windows
