@@ -6,6 +6,9 @@ wsl extensions run in linux
 access linux files and compilers
 
 # wsl cursor file not found error
+error message: [0417/215251.461:ERROR:third_party\crashpad\crashpad\util\win\registration_protocol_win.cc:108] CreateFile: The system cannot find the file specified. (0x2)
+
+
 this involves inter process communication (ipc)
 
 ## ipc
@@ -17,12 +20,12 @@ linux ipc uses unix domain sockets
 
 ## why cursor need ipc
 when launch `cursor.exe`, launch two programs
-1) main app, the ui
-2) backend which include watcher `crashpad_handler.exe`, background process watch the main app
+1) ui in windows
+2) server in wsl
 
 these are two separate processes, need ipc
 
-when use cursor with wsl,
+cuz when use cursor with wsl,
 split brain in half
 ui (client) run in windows
 backend (server) run in wsl
@@ -36,12 +39,12 @@ when run cursor in wsl terminal, actually running linux shell script of this vs 
 
 so have wsl program, and windows program
 
-## the problem - ipc between wsl program and windows program not possible for crashpad
+## the problem - windows crashpad cannot find windows environment variable for ipc windows named pipe
 run your command
 run shell script of vs code server in wsl
 run wsl node js process
 relay ipc message to windows and read/write file, this is successful
-but also cuz cursor built on electron libraries, invoke crashpad watcher in wsl, problem is with crashpad
+but also cuz cursor built on electron libraries, invoke crashpad watchers in both wsl and windows
 
 ---
 
@@ -50,20 +53,40 @@ when program dies, cant write error report, connect to internet, send to devs
 so this is the reason for chromium crashpad library, crashpad is the watcher
 watcher get crash data from memory send to devs
 
+there is a crashpad in windows for ui, and crashpad in wsl for server
+
 this is about telemetry (see more below)
 
 ---
 
 so
-cursor environment variables in windows tell the wsl node js process,
-route all telemetry data to windows watcher in windows, **this also uses ipc**, and windows named pipes
-wsl crashpad watcher cannot use windows named pipes, cannot talk to windows watcher, write error into `debug.log` file
-cuz crashpad older c++ library, cannot translate windows named pipes into wsl unix domain sockets
+by right windows environment variables passed to wsl
+for vs code windows has dedicated ipc sockets to provide those windows environment variables
+but for cursor there is environment stripping, terminal clean no variables
+this happens inside cursor, in integrated terminal
+so start cursor in integrated terminal
+cursor ui in windows need windows environment variable to start crashpad in windows
+but cant find it, so write error into `debug.log` file
 
 ### why ipc to read/write wsl files successful
 first there's another ipc, between wsl terminal and cursor server in wsl, this good
 then also need send wsl files to cursor ui in windows, this also ipc, but not thru pipes or sockets
-this part look at network file sharing section below
+this part look at network file sharing, section below
+
+---
+
+## failed fix - wslenv bridge doesnt work
+tell linux, pass environment variable through firewall into windows when run command
+use microsoft's undocumented wslenv flag
+this doesnt fix bug, cuz environment stripping, no variable alr
+
+---
+
+## current temp fix 
+open ~/.bash_aliases file, refer to current bash aliases file for what to do
+basically change file path to absolute path, run the cursor command in a temp folder, dump error log there, delete whole folder
+
+---
 
 ---
 
@@ -76,21 +99,6 @@ record which buttons clicked, how long commands run, extensions used
 
 #### crashpad (crash reporting)
 if background process dies, crashpad takes computer memory snapshot, send it to main app so devs can fix bug
-
----
-
-## failed fix - wslenv bridge doesnt work
-tell linux, pass environment variable through firewall into windows when run command
-use microsoft's undocumented wslenv flag
-this doesnt fix bug
-
----
-
-## current temp fix 
-open ~/.bash_aliases file, refer to current bash aliases file for what to do
-basically change file path to absolute path, run the cursor command in a temp folder, dump error log there, delete whole folder
-
----
 
 # windows and wsl network file sharing
 when just type 'cursor' in wsl, this refers to cursor executable file in windows
@@ -107,3 +115,10 @@ hidden 9p server in wsl, receive request, read file from wsl ext4 hard drive, st
 
 under 9P (?), use Custom RPC (Remote Procedure Call) Network Bridge, this replaces ipc pipes and sockets,
 it's a dedicated translated network socket pass json messages
+
+# why ~ works in standalone wsl terminal not in cursor integrated terminal
+in standalone, translate wsl path into windows path
+in integrated, cursor server has shell script, just give the raw thing with ~ to windows, cant read
+
+# windows environment variables
+windows will pass down env variables into wsl INTEGRATED terminal in ide
