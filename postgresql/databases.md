@@ -32,6 +32,6 @@ disrupt long running schema changes
 **postgresql://**: the database protocol
 **postgres.[PROJECT_REF]**: database user and specific project id
 **[PASSWORD]**: database password
-**@aws-0-xx.pooler.supabase.com**: host address of database
+**@aws-0-xx.pooler.supabase.com**: host address of database, xx is the region
 **:6543**: port number (change to 5432 for direct connection)
 **/postgres**: default database name

@@ -20,7 +20,8 @@ can promote preview to production, default branch doesnt change
 just one time change current production deployment to that deployment
 when new changes in default branch, trigger new builds, then new production deployment, overwrite temp promoted deployment
 
-# next public api url why empty
+# backend api url why empty
+it's called next public api url
 this is api url for frontend code to talk to backend app
 
 **why called public**
